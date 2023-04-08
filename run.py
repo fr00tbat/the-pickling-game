@@ -1,6 +1,18 @@
-
+# storage & display areas
 fridge = [[],[],[]]
 pickling_table = []
+
+# food items and combined ingredient arrays
+ingreds = []
+garlic = "garlic"
+dill = "dill"
+mustard_seeds = "mustard seeds"
+
+picklingbrine = []
+salt = "salt"
+sugar = "sugar"
+water = "water"
+vinegar = "vinegar"
 
 
 class Jar:
