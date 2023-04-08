@@ -26,10 +26,15 @@ class Jar:
     # def fill(items):
 
 
-jar1 = Jar()
-print(jar1.describe())
+class Cucumber:
+    def __init__(self):
+        self.pickledeness = "fresh"
+        self.crunch = "very crunchy"
+    
+    def describe(self):
+        return f"description: \npickledness: {self.pickledeness}\ncrunch: {self.crunch}"
 
 
-
-
+cucumber1 = Cucumber()
+print(cucumber1.describe())
 
