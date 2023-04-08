@@ -1,9 +1,12 @@
+location = "pickling room"
+
+
 # storage & display areas
 fridge = [[],[],[]]
 pickling_table = []
 
 # food items and combined ingredient arrays
-ingreds = []
+spices = []
 garlic = "garlic"
 dill = "dill"
 mustard_seeds = "mustard seeds"
