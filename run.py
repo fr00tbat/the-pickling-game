@@ -1,3 +1,6 @@
+import time
+import subprocess as sp
+
 location = "pickling room"
 
 
@@ -75,14 +78,34 @@ def move_to(destination):
 
 
 def consider_pickling_room():
-    print("You are inside the pickling room.")
+    """
+    Give user options for pickling room
+    """
+    print("You are inside the pickling room.\n")
     print("What would you like to do?")
-    print("(enter an option)")
+    print("******************\n")
     print("1. View pickling table")
-    print("2. View fridge")    
+    print("2. View fridge")
+    print("\n******************")
+    choice = input("- enter a number for your chosen option above: \n\n")
+    
+    if choice == "1":
+        consider_pickling_table()
+    elif choice == "2":
+        consider_fridge()
+    else:
+        print("Invalid choice; please enter one of the choice numbers given above when given the prompt.")
+        time.sleep(2)
+        tmp = sp.call('clear', shell=True)
+        consider_pickling_room()
+
+
 
 
 def consider_fridge():
+    """
+    Give user options for fridge
+    """
     print("You crack open your gently humming fridge.")
     print("What would you like to do?")
     print("(enter an option)")
@@ -92,6 +115,9 @@ def consider_fridge():
 
 
 def consider_pickling_table():
+    """
+    Give user options for pickling table
+    """
     print("You approach the pickling table.")
     print("What would you like to do?")
     print("(enter an option)")
@@ -108,9 +134,14 @@ def consider_pickling_table():
     print("n. Move across the pickling room")
 
 
+
+
+
+
+
 """
 cucumber1 = Cucumber()
 print(cucumber1.describe())
 """
 
-move_to("pickling table")
+move_to(location)
