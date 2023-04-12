@@ -81,22 +81,24 @@ def consider_pickling_room():
     """
     Give user options for pickling room
     """
+    options = [1, 2]
     print("You are inside the pickling room.\n")
     print("What would you like to do?")
     print("******************\n")
     print("1. View pickling table")
     print("2. View fridge")
-    print("\n******************")
-    choice = input("- enter a number for your chosen option above: \n\n")
+    choice = get_input(options)
     
     if choice == "1":
         consider_pickling_table()
     elif choice == "2":
         consider_fridge()
     else:
+        """
         print("Invalid choice; please enter one of the choice numbers given above when given the prompt.")
-        time.sleep(2)
+        time.sleep(3)
         tmp = sp.call('clear', shell=True)
+        """
         consider_pickling_room()
 
 
@@ -106,21 +108,24 @@ def consider_fridge():
     """
     Give user options for fridge
     """
+    options = [1,2,3]
     print("You crack open your gently humming fridge.")
     print("What would you like to do?")
-    print("(enter an option)")
+    print("********************")
     print("1. Survey items on fridge shelves")
     print("2. Eat a pickle")
-    print("n. Close fridge")
+    print("3. Close fridge")
+    choice = get_input(options)
 
 
 def consider_pickling_table():
     """
     Give user options for pickling table
     """
+    options = [1,2,3,4,5,6,7]
     print("You approach the pickling table.")
     print("What would you like to do?")
-    print("(enter an option)")
+    print("****************")
 
     print("1. Survey pickling table items")
     print("2. Pick out an empty jar")
@@ -129,12 +134,75 @@ def consider_pickling_table():
 
     print("5. Wash item in sink")
     print("6. Boil an item for 15m in hot water")
-    print("")
-    print("")
-    print("n. Move across the pickling room")
+    print("7. Move across the pickling room")
+    choice = get_input(options)
 
 
+def get_input(options):
+    print("\n- enter a number for one of the options: \n")
+    choice = input("******************\n")
 
+    #print(type(int(choice)))
+    validated = validate_input(choice, options)
+    if validated is True:
+        print("Validated")
+    else:
+        print("Input was invalid")
+    return choice
+
+
+def validate_input(choiceval, optionlist):
+    """
+    function for validating user input for multiple choice segments
+    """
+    print("###############")
+    print(choiceval) #works takes in parameter
+    print(type(choiceval))
+    
+    print("###############")
+
+
+    try:
+        intval = int(choiceval)
+        print(intval)
+        print(type(intval))
+        print("###############")
+        if isinstance(intval, int) is False:
+            raise ValueError(
+                f"The value you entered was not a whole number. You entered {choiceval}."
+            )
+        choiceisoption = False
+        for option in optionlist:
+            if intval == option:
+                choiceisoption = True
+                break
+        if choiceisoption == False:
+            raise ValueError(
+                f"The value you entered was not one of the options given. You entered {choiceval}."
+            )
+    except ValueError as e:
+        print(f"Invalid input: {e}, Please enter one of the numbered choices.")
+        return False
+    except ValueError as e:
+        print(f"Invalid input: {e}, Please enter one of the numbered choices.")
+        return False    
+    else:
+        return True
+
+
+def test(input):
+    """
+    testing type conversion
+    fails unless is valid int
+    if string or float or non int value ...
+    if this fails
+        print Error("yo it's not an int. It looks like string/float/boolean")
+    else:
+        print("congrats it's an int")
+    """
+    print("Input type conversion attempt- type is:" + type(int(input)))
+    print("should be int")
+    
 
 
 
@@ -145,3 +213,4 @@ print(cucumber1.describe())
 """
 
 move_to(location)
+
