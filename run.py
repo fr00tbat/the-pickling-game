@@ -104,6 +104,7 @@ def consider_pickling_room():
 
 
 
+
 def consider_fridge():
     """
     Give user options for fridge
@@ -116,6 +117,9 @@ def consider_fridge():
     print("2. Eat a pickle")
     print("3. Close fridge")
     choice = get_input(options)
+
+    if choice == "3":
+        consider_pickling_room()
 
 
 def consider_pickling_table():
@@ -137,15 +141,18 @@ def consider_pickling_table():
     print("7. Move across the pickling room")
     choice = get_input(options)
 
+    if choice == "7":
+        consider_pickling_room()
+
 
 def get_input(options):
     print("\n- enter a number for one of the options: \n")
-    choice = input("******************\n")
+    choice = input("******************\n\n")
 
     #print(type(int(choice)))
     validated = validate_input(choice, options)
     if validated is True:
-        print("Validated")
+        print("\n - A valid choice!\n")
     else:
         print("Input was invalid")
     return choice
@@ -155,18 +162,9 @@ def validate_input(choiceval, optionlist):
     """
     function for validating user input for multiple choice segments
     """
-    print("###############")
-    print(choiceval) #works takes in parameter
-    print(type(choiceval))
-    
-    print("###############")
-
 
     try:
         intval = int(choiceval)
-        print(intval)
-        print(type(intval))
-        print("###############")
         if isinstance(intval, int) is False:
             raise ValueError(
                 f"The value you entered was not a whole number. You entered {choiceval}."
