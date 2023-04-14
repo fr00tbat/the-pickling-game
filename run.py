@@ -11,16 +11,26 @@ class Jar:
     """Jar class"""
 
 
-    def __init__(self):
+    def __init__(self, batch):
         # properties
         self.size = "medium"
+        self.batch = batch
         self.label = ""
         self.contents = []
         self.lid = "on"
 
     def describe(self):
         """get description of jar"""
-        description = f"description: \nsize: {self.size}\nlabel: {self.label}\ncontents: {self.contents}\nlid: {self.lid}"
+        description = {
+            "size": self.size,
+            "batch": self.batch,
+            "label": self.label,
+            "contents": self.contents,
+            "lid": self.lid
+        }
+
+
+        # description = f"description: \nsize: {self.size}\nlabel: {self.label}\ncontents: {self.contents}\nlid: {self.lid}"
         return description
 
     def open(self):
@@ -181,6 +191,36 @@ def validate_input(choiceval, optionlist):
     return True
 
 
+def spawn_jars():
+    # jar_count = 12
+    jar1 = Jar(1)
+    jar1 = Jar(2)
+    jar1 = Jar(3)
+    jar1 = Jar(4)
+    jar1 = Jar(5)
+    jar1 = Jar(6)
+    jar1 = Jar(7)
+    jar1 = Jar(8)
+    jar1 = Jar(9)
+    jar1 = Jar(10)
+    jar1 = Jar(11)
+    jar1 = Jar(12)
+
+    jars = (jar1, jar2, jar3, jar4, jar5, jar6, jar7, jar8, jar9, jar10, jar11, jar12)
+    return jars
+
+
+def get_jar(jar_count):
+    """ function to retrieve new jar and put it on the pickling table"""
+    writelabel = input("Please write a descriptive label for your chosen jar\n")
+    # batchno = jar_count
+    # jar1 = Jar(batchno)
+
+    # print(jar1.describe())
+    # jar_count =+ 1
+    return (jar_count)
+
+
 def test(usrinput):
     """
     testing type conversion
@@ -198,10 +238,6 @@ def test(usrinput):
 
 
 
-"""
-cucumber1 = Cucumber()
-print(cucumber1.describe())
-"""
 
 def main():
     """
@@ -226,6 +262,8 @@ def main():
     water = "water"
     vinegar = "vinegar"
 
-    move_to(location)
+    empty_jars = [spawn_jars()]
+
+    # move_to(location)
 
 main()
