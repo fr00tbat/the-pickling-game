@@ -84,7 +84,7 @@ def consider_pickling_room():
     options = [1, 2]
     print("You are inside the pickling room.\n")
     print("What would you like to do?")
-    print("******************\n")
+    print("******************")
     print("1. View pickling table")
     print("2. View fridge")
     choice = get_input(options)
@@ -146,7 +146,7 @@ def consider_pickling_table():
 
 
 def get_input(options):
-    print("\n- enter a number for one of the options: \n")
+    print("\n- enter a number for one of the options: ")
     choice = input("******************\n\n")
 
     #print(type(int(choice)))
