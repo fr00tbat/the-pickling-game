@@ -1,8 +1,8 @@
 """
 The Pickling Game
 """
-import time
-import subprocess as sp
+# import time
+# import subprocess as sp
 
 
 
@@ -55,16 +55,15 @@ def move_to(destination):
     """
     if destination == "pickling room":
         # run pickling room option script
-        location = "pickling room"
+        location = destination
         consider_pickling_room()
     elif destination == "fridge":
         # run fridge option script
-        location = "fridge"
+        location = destination
         consider_fridge()
     elif destination == "pickling table":
         # run pickling table option script
-        location = "pickling table"
-        location = "pickling table"
+        location = destination
         consider_pickling_table()
     else:
         print("Where are you?")
@@ -169,7 +168,7 @@ def validate_input(choiceval, optionlist):
             if intval == option:
                 choiceisoption = True
                 break
-        if choiceisoption == False:
+        if choiceisoption is False:
             raise ValueError(
                 f"The value you entered was not one of the options given. You entered {choiceval}."
             )
@@ -179,11 +178,10 @@ def validate_input(choiceval, optionlist):
     except ValueError as e:
         print(f"Invalid input: {e}, Please enter one of the numbered choices.")
         return False
-    else:
-        return True
+    return True
 
 
-def test(input):
+def test(usrinput):
     """
     testing type conversion
     fails unless is valid int
@@ -193,7 +191,7 @@ def test(input):
     else:
         print("congrats it's an int")
     """
-    print("Input type conversion attempt- type is:" + type(int(input)))
+    print("Input type conversion attempt- type is:" + type(int(usrinput)))
     print("should be int")
 
 
@@ -206,6 +204,9 @@ print(cucumber1.describe())
 """
 
 def main():
+    """
+    Main method
+    """
     location = "pickling room"
 
 
