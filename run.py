@@ -194,23 +194,39 @@ def validate_input(choiceval, optionlist):
 def spawn_jars():
     # jar_count = 12
     jar1 = Jar(1)
-    jar1 = Jar(2)
-    jar1 = Jar(3)
-    jar1 = Jar(4)
-    jar1 = Jar(5)
-    jar1 = Jar(6)
-    jar1 = Jar(7)
-    jar1 = Jar(8)
-    jar1 = Jar(9)
-    jar1 = Jar(10)
-    jar1 = Jar(11)
-    jar1 = Jar(12)
+    jar2 = Jar(2)
+    jar3 = Jar(3)
+    jar4 = Jar(4)
+    jar5 = Jar(5)
+    jar6 = Jar(6)
+    jar7 = Jar(7)
+    jar8 = Jar(8)
+    jar9 = Jar(9)
+    jar10 = Jar(10)
+    jar11 = Jar(11)
+    jar12 = Jar(12)
 
     jars = (jar1, jar2, jar3, jar4, jar5, jar6, jar7, jar8, jar9, jar10, jar11, jar12)
     return jars
 
 
-def get_jar(jar_count):
+def print_empty_jars(empty_jars):
+    """function to print details of empty jars left"""
+    for i in range(len(empty_jars)):
+        print(i)
+        jaritem = empty_jars[i].describe()
+        print(jaritem)
+
+
+def count_empty_jars(empty_jars):
+    jar_count = 0
+    for i in range(len(empty_jars)):
+        if empty_jars[i] is not None:
+            jar_count = jar_count + 1
+    return jar_count
+
+
+def get_jar():
     """ function to retrieve new jar and put it on the pickling table"""
     writelabel = input("Please write a descriptive label for your chosen jar\n")
     # batchno = jar_count
@@ -262,8 +278,18 @@ def main():
     water = "water"
     vinegar = "vinegar"
 
-    empty_jars = [spawn_jars()]
-
+    empty_jars = []
+    empty_jars = spawn_jars()
+    
+    
+    
+    print(empty_jars)
+    count = 11
+    for i in range(len(empty_jars)):
+        print(i)
+        jaritem = empty_jars[i].describe()
+        print(jaritem)
+        
     # move_to(location)
 
 main()
