@@ -4,24 +4,7 @@ The Pickling Game
 import time
 import subprocess as sp
 
-LOCATION = "pickling room"
 
-
-# storage & display areas
-FRIDGE = [[], [], []]
-PICKLING_TABLE = []
-
-# food items and combined ingredient arrays
-SPICES = []
-GARLIC = "garlic"
-DILL = "dill"
-MUSTARD_SEEDS = "mustard seeds"
-
-PICKLING_BRINE = []
-SALT = "salt"
-SUGAR = "sugar"
-WATER = "water"
-VINEGAR = "vinegar"
 
 
 class Jar:
@@ -72,16 +55,16 @@ def move_to(destination):
     """
     if destination == "pickling room":
         # run pickling room option script
-        LOCATION = "pickling room"
+        location = "pickling room"
         consider_pickling_room()
     elif destination == "fridge":
         # run fridge option script
-        LOCATION = "fridge"
+        location = "fridge"
         consider_fridge()
     elif destination == "pickling table":
         # run pickling table option script
-        LOCATION = "pickling table"
-        LOCATION = "pickling table"
+        location = "pickling table"
+        location = "pickling table"
         consider_pickling_table()
     else:
         print("Where are you?")
@@ -222,4 +205,26 @@ cucumber1 = Cucumber()
 print(cucumber1.describe())
 """
 
-move_to(LOCATION)
+def main():
+    location = "pickling room"
+
+
+    # storage & display areas
+    fridge = [[], [], []]
+    pickling_table = []
+
+    # food items and combined ingredient arrays
+    spices = []
+    garlic = "garlic"
+    dill = "dill"
+    mustard_seeds = "mustard seeds"
+
+    pickling_brine = []
+    salt = "salt"
+    sugar = "sugar"
+    water = "water"
+    vinegar = "vinegar"
+
+    move_to(location)
+
+main()
