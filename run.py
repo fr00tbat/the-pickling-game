@@ -1,28 +1,33 @@
+"""
+The Pickling Game
+"""
 import time
 import subprocess as sp
 
-location = "pickling room"
+LOCATION = "pickling room"
 
 
 # storage & display areas
-fridge = [[], [], []]
-pickling_table = []
+FRIDGE = [[], [], []]
+PICKLING_TABLE = []
 
 # food items and combined ingredient arrays
-spices = []
-garlic = "garlic"
-dill = "dill"
-mustard_seeds = "mustard seeds"
+SPICES = []
+GARLIC = "garlic"
+DILL = "dill"
+MUSTARD_SEEDS = "mustard seeds"
 
-picklingbrine = []
-salt = "salt"
-sugar = "sugar"
-water = "water"
-vinegar = "vinegar"
+PICKLING_BRINE = []
+SALT = "salt"
+SUGAR = "sugar"
+WATER = "water"
+VINEGAR = "vinegar"
 
 
 class Jar:
-    """jar class"""
+    """Jar class"""
+
+
     def __init__(self):
         # properties
         self.size = "medium"
@@ -31,13 +36,16 @@ class Jar:
         self.lid = "on"
 
     def describe(self):
+        """get description of jar"""
         description = f"description: \nsize: {self.size}\nlabel: {self.label}\ncontents: {self.contents}\nlid: {self.lid}"
         return description
 
-    def open():
+    def open(self):
+        """remove jar lid"""
         self.lid = "off"
 
-    def close():
+    def close(self):
+        """screw on jar lid"""
         self.lid = "on"
 
     # def insert(items):
@@ -46,11 +54,14 @@ class Jar:
 
 
 class Cucumber:
+    """Cucumber class"""
     def __init__(self):
+        # Cucumber properties
         self.pickledeness = "fresh"
         self.crunch = "very crunchy"
 
     def describe(self):
+        """get description cucumber"""
         description = f"description: \npickledness: {self.pickledeness}\ncrunch: {self.crunch}"
         return description
 
@@ -61,15 +72,16 @@ def move_to(destination):
     """
     if destination == "pickling room":
         # run pickling room option script
-        location = "pickling room"
+        LOCATION = "pickling room"
         consider_pickling_room()
     elif destination == "fridge":
         # run fridge option script
-        location = "fridge"
+        LOCATION = "fridge"
         consider_fridge()
     elif destination == "pickling table":
         # run pickling table option script
-        location = "pickling table"
+        LOCATION = "pickling table"
+        LOCATION = "pickling table"
         consider_pickling_table()
     else:
         print("Where are you?")
@@ -88,7 +100,7 @@ def consider_pickling_room():
     print("1. View pickling table")
     print("2. View fridge")
     choice = get_input(options)
-    
+
     if choice == "1":
         consider_pickling_table()
     elif choice == "2":
@@ -183,7 +195,7 @@ def validate_input(choiceval, optionlist):
         return False
     except ValueError as e:
         print(f"Invalid input: {e}, Please enter one of the numbered choices.")
-        return False    
+        return False
     else:
         return True
 
@@ -200,7 +212,7 @@ def test(input):
     """
     print("Input type conversion attempt- type is:" + type(int(input)))
     print("should be int")
-    
+
 
 
 
@@ -210,5 +222,4 @@ cucumber1 = Cucumber()
 print(cucumber1.describe())
 """
 
-move_to(location)
-
+move_to(LOCATION)
