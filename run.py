@@ -3,9 +3,56 @@ The Pickling Game
 """
 
 
+#########################################################
+# Main function
+
+def main():
+    """
+    Main method
+    """
+    location = "pickling room"
+
+    # food items and combined ingredient arrays
+    garlic = "garlic"
+    dill = "dill"
+    mustard_seeds = "mustard seeds"
+    spices = [garlic, dill, mustard_seeds]
+
+    salt = "salt"
+    sugar = "sugar"
+    water = "water"
+    vinegar = "vinegar"
+    pickling_brine = [salt, sugar, water, vinegar]
+
+    # cutlery & crockery
+    spoon = "spoon"
+
+    # storage & display areas
+    press = [spoon, salt, sugar, water, vinegar, garlic, dill, mustard_seeds]
+    fridge = [[], [], []]
+    pickling_table = []
+    storage_areas = [press, fridge, pickling_table]
+
+    game_state = [storage_areas, location]
+
+    empty_jars = []
+    empty_jars = spawn_jars(empty_jars)
+    
+    # jar stuff
+    # jar_funct_output = get_jar(pickling_table, empty_jars)
+    # pickling_table = jar_funct_output[0]
+    # empty_jars = jar_funct_output[1]
+    
+    # print(get_jar(pickling_table, empty_jars).describe())
+    # print(pickling_table)
+    # print(empty_jars)
+
+    move_to(game_state)
 
 
 
+
+#########################################################
 # some classes
 
 class Jar:
@@ -58,13 +105,15 @@ class Cucumber:
         return description
 
 
-
+#########################################################
 # Navigational and observational functions
 
-def move_to(destination):
+def move_to(game_state):
     """
     move around the room
     """
+    destination = game_state[1]
+    storage_areas = game_state[0]
     if destination == "pickling room":
         # run pickling room option script
         location = destination
@@ -72,11 +121,11 @@ def move_to(destination):
     elif destination == "fridge":
         # run fridge option script
         location = destination
-        consider_fridge()
+        consider_fridge(storage_areas)
     elif destination == "pickling table":
         # run pickling table option script
         location = destination
-        consider_pickling_table()
+        consider_pickling_table(storage_areas)
     else:
         print("Where are you?")
         print("You have floated away")
@@ -109,7 +158,7 @@ def consider_pickling_room():
         consider_pickling_room()
 
 
-def consider_fridge():
+def consider_fridge(storage_areas):
     """
     Give user options for fridge
     """
@@ -126,10 +175,15 @@ def consider_fridge():
         consider_pickling_room()
 
 
-def consider_pickling_table():
+def consider_pickling_table(storage_areas):
     """
     Give user options for pickling table
     """
+    print(storage_areas)
+    press = storage_areas[0]
+    fridge = storage_areas[1]
+    pickling_table = storage_areas[2]
+
     options = [1,2,3,4,5,6,7]
     print("You approach the pickling table.")
     print("What would you like to do?")
@@ -145,11 +199,28 @@ def consider_pickling_table():
     print("7. Move across the pickling room")
     choice = get_input(options)
 
-    if choice == "7":
+    if choice == "1":
+        print(pickling_table)
+    elif choice == "7":
         consider_pickling_room()
 
 
+#########################################################
+# Pickling table operations
 
+# def survey_table(pickling_table):
+#    return(pickling_table)
+
+# def put_out(item):
+
+# def wash(item):
+
+# def boil(item):
+
+
+
+
+#########################################################
 # Input functions
 
 def get_input(options):
@@ -196,7 +267,7 @@ def validate_input(choiceval, optionlist):
         return False
     return True
 
-
+#########################################################
 # Jar management
 
 def spawn_jars(empty_jars):
@@ -254,7 +325,7 @@ def get_jar(pickling_table, empty_jars):
     for i in range(len(emptjars)):
         print(isinstance(emptjars[i], Jar))
         if isinstance(emptjars[i], Jar):
-            print("reached here")
+            # print("reached here") # test
             new_jar = emptjars[i]
             print(new_jar)
             emptjars[i] = 0
@@ -287,41 +358,6 @@ def test(usrinput):
 
 
 
-# Main function
-
-def main():
-    """
-    Main method
-    """
-    location = "pickling room"
-
-
-    # storage & display areas
-    fridge = [[], [], []]
-    pickling_table = []
-
-    # food items and combined ingredient arrays
-    spices = []
-    garlic = "garlic"
-    dill = "dill"
-    mustard_seeds = "mustard seeds"
-
-    pickling_brine = []
-    salt = "salt"
-    sugar = "sugar"
-    water = "water"
-    vinegar = "vinegar"
-
-    empty_jars = []
-    empty_jars = spawn_jars(empty_jars)
-    jar_funct_output = get_jar(pickling_table, empty_jars)
-    pickling_table = jar_funct_output[0]
-    empty_jars = jar_funct_output[1]
-    # print(get_jar(pickling_table, empty_jars).describe())
-    # print(pickling_table)
-    # print(empty_jars)
-
-    move_to(location)
 
 
 main()
