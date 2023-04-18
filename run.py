@@ -1,11 +1,12 @@
 """
 The Pickling Game
 """
-# import time
-# import subprocess as sp
 
 
 
+
+
+# some classes
 
 class Jar:
     """Jar class"""
@@ -29,8 +30,6 @@ class Jar:
             "lid": self.lid
         }
 
-
-        # description = f"description: \nsize: {self.size}\nlabel: {self.label}\ncontents: {self.contents}\nlid: {self.lid}"
         return description
 
     def open(self):
@@ -59,6 +58,9 @@ class Cucumber:
         return description
 
 
+
+# Navigational and observational functions
+
 def move_to(destination):
     """
     move around the room
@@ -79,6 +81,7 @@ def move_to(destination):
         print("Where are you?")
         print("You have floated away")
         print("> Move back to pickling room")
+
 
 
 def consider_pickling_room():
@@ -104,9 +107,6 @@ def consider_pickling_room():
         tmp = sp.call('clear', shell=True)
         """
         consider_pickling_room()
-
-
-
 
 
 def consider_fridge():
@@ -149,7 +149,13 @@ def consider_pickling_table():
         consider_pickling_room()
 
 
+
+# Input functions
+
 def get_input(options):
+    """
+    function to retrieve user input for choices
+    """
     print("\n- enter a number for one of the options: ")
     choice = input("******************\n\n")
 
@@ -191,7 +197,12 @@ def validate_input(choiceval, optionlist):
     return True
 
 
-def spawn_jars():
+# Jar management
+
+def spawn_jars(empty_jars):
+    """
+    function for spawning a new set of empty jar objects
+    """
     # jar_count = 12
     jar1 = Jar(1)
     jar2 = Jar(2)
@@ -207,7 +218,13 @@ def spawn_jars():
     jar12 = Jar(12)
 
     jars = (jar1, jar2, jar3, jar4, jar5, jar6, jar7, jar8, jar9, jar10, jar11, jar12)
-    return jars
+    for jar in jars:
+        empty_jars.append(jar)
+    print(jars)
+    print(jar1)
+    print(jar1.describe())
+    print("jars spawned")
+    return empty_jars
 
 
 def print_empty_jars(empty_jars):
@@ -219,22 +236,39 @@ def print_empty_jars(empty_jars):
 
 
 def count_empty_jars(empty_jars):
+    """
+    function for counting empty jars
+    """
     jar_count = 0
     for i in range(len(empty_jars)):
-        if empty_jars[i] is not None:
+        if isinstance(empty_jars[i], Jar):
             jar_count = jar_count + 1
     return jar_count
 
 
-def get_jar():
+def get_jar(pickling_table, empty_jars):
     """ function to retrieve new jar and put it on the pickling table"""
-    writelabel = input("Please write a descriptive label for your chosen jar\n")
-    # batchno = jar_count
-    # jar1 = Jar(batchno)
-
-    # print(jar1.describe())
-    # jar_count =+ 1
-    return (jar_count)
+    emptjars = []
+    emptjars = empty_jars
+    new_jar = None
+    for i in range(len(emptjars)):
+        print(isinstance(emptjars[i], Jar))
+        if isinstance(emptjars[i], Jar):
+            print("reached here")
+            new_jar = emptjars[i]
+            print(new_jar)
+            emptjars[i] = 0
+            break
+    if new_jar is not None:
+        pickling_table.append(new_jar)
+        writelabel = input("Please write a descriptive label for your chosen jar:\n")
+        new_jar.label = writelabel
+        print(new_jar.describe())
+        print(pickling_table)
+        return(pickling_table, emptjars)
+    else:
+        print("new jar did not get assigned")
+        return(new_jar)
 
 
 def test(usrinput):
@@ -253,7 +287,7 @@ def test(usrinput):
 
 
 
-
+# Main function
 
 def main():
     """
@@ -279,17 +313,15 @@ def main():
     vinegar = "vinegar"
 
     empty_jars = []
-    empty_jars = spawn_jars()
-    
-    
-    
-    print(empty_jars)
-    count = 11
-    for i in range(len(empty_jars)):
-        print(i)
-        jaritem = empty_jars[i].describe()
-        print(jaritem)
-        
-    # move_to(location)
+    empty_jars = spawn_jars(empty_jars)
+    jar_funct_output = get_jar(pickling_table, empty_jars)
+    pickling_table = jar_funct_output[0]
+    empty_jars = jar_funct_output[1]
+    # print(get_jar(pickling_table, empty_jars).describe())
+    # print(pickling_table)
+    # print(empty_jars)
+
+    move_to(location)
+
 
 main()
