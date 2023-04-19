@@ -71,6 +71,7 @@ class Jar:
         self.contents = []
         self.lid = "on"
         self.disinfected = False
+        self.agitated = False
 
     def __str__(self):
         return f"jar with label {self.label}"
@@ -89,7 +90,6 @@ class Jar:
             "lid": self.lid,
             "disinfected": self.disinfected
         }
-
         return description
 
     def open(self):
@@ -100,7 +100,19 @@ class Jar:
         """screw on jar lid"""
         self.lid = "on"
 
-    # def insert(items):
+    def insert(self, chosen_item):
+        """
+        function to insert items into the jar
+        Might adjust to insert sets of premixed items:
+        - a list of 5 cucumbers
+        - a list of spices
+        - a list of brine ingredients
+        """
+        
+        self.contents.append(chosen_item)
+        for item in pickling_table:
+            if item == chosen_item:
+                pickling_table.remove(item)
 
     # def fill(items):
 
@@ -317,7 +329,7 @@ def consider_pickling_table():
     if jar_on_table is False:
         options = [1,2,3,4,5,6,7]
     else:
-        options = [1,2,3,4,5,6,7,8,9,10,11]
+        options = [1,2,3,4,5,6,7,8,9,10,11,12]
 
     print("You approach the pickling table.")
     print("What would you like to do?")
@@ -336,13 +348,16 @@ def consider_pickling_table():
         print("7. Open jar lid")
         print("8. Close jar lid")
         print("9. Put items in jar")
-        print("10. Shake jar")
-        print("11. Store jar")
+        print("10. Study items in jar")
+        print("11. Shake jar")
+        print("12. Store jar")
 
     choice = get_input(options)
+    # rerun current function on invalid input
     if choice is False:
         consider_pickling_table()
 
+    # normal menu
     if choice == "1":
         consider_pickling_room()
     elif choice == "2":
@@ -355,6 +370,19 @@ def consider_pickling_table():
         what_to_wash()
     elif choice == "6":
         what_to_boil()
+    # expanded menu
+    elif choice =="7":
+        for item in pickling_table:
+            if isinstance(item, Jar):
+                item.open()
+    elif choice =="8":
+        for item in pickling_table:
+            if isinstance(item, Jar):
+                item.close()
+    elif choice == "9":
+        for item in pickling_table:
+            if isinstance(item, Jar):
+                choose_to_insert()
     consider_pickling_table()
 
 #########################################################
@@ -423,6 +451,7 @@ def survey_table(pickling_table):
     else:
         print("The items on the table are as follows:")
         print(pickling_table)
+        return pickling_table
         # print("\n")
     
     
@@ -492,13 +521,13 @@ def what_to_boil():
         
         choice = get_input(options)
         choice = int(choice)
-        print(f"1.choice is : " + str(choice))
-        print(type(choice))
+        # print(f"1.choice is : " + str(choice)) # test
+        # print(type(choice)) # test
         if choice is False:
             what_to_boil()
         # if choice is an index in the pickling_table list    
         elif (choice >= 0 and choice <= len(pickling_table)):
-            print(f"2.choice is : " + str(choice))
+            # print(f"2.choice is : " + str(choice)) # test
             if isinstance(pickling_table[int(choice)], Jar):
                 boil(pickling_table[int(choice)])
             else:
@@ -513,6 +542,42 @@ def boil(item):
     """
     item.disinfected = True
     print(pickling_table[0].describe())
+
+
+def choose_to_insert():
+    """
+    function to choose what to insert
+    """
+    options = []
+
+    table_less_jars = []
+    jar = None
+    if pickling_table != []:
+        print("What item would you like to insert into the jar?\n")
+        for item in pickling_table:
+            if isinstance(item, Jar) is False:
+                table_less_jars.append(item)
+            else:
+                jar = item
+        for i in range(len(table_less_jars)):
+            if isinstance(table_less_jars[i], (Cucumber)):
+                print(f"" + str(i) + ". " + table_less_jars[i].__repr__())
+            else:
+                print(f"" + str(i) + ". " + table_less_jars[i])
+        for i in range(len(table_less_jars)):
+            options.append(i)
+
+        choice = get_input(options)
+        choice = int(choice)
+        if choice is False:
+            choose_to_insert()
+        elif (choice >= 0 and choice <= len(table_less_jars)):
+            print(table_less_jars[choice])
+            jar.insert(table_less_jars[choice])
+            print(jar.contents)
+
+
+
 
 
 #########################################################
