@@ -182,9 +182,14 @@ def count_empty_jars(empty_jars):
 
 def get_jar(pickling_table, empty_jars):
     """ function to retrieve new jar and put it on the pickling table"""
-    print(pickling_table.count(jar))
-    if pickling_table.count("jar") > 0:
-        print("You already have a jar on the table.")
+    
+    jar_on_table = False
+    for item in pickling_table:
+        if isinstance(item, Jar):
+            jar_on_table = True
+        
+    if jar_on_table:
+        print("You already have a jar on the table.\n")
         return None
 
     emptjars = []
