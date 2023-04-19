@@ -182,12 +182,11 @@ def count_empty_jars(empty_jars):
 
 def get_jar(pickling_table, empty_jars):
     """ function to retrieve new jar and put it on the pickling table"""
-    
+
     jar_on_table = False
     for item in pickling_table:
         if isinstance(item, Jar):
             jar_on_table = True
-        
     if jar_on_table:
         print("You already have a jar on the table.\n")
         return None
@@ -214,7 +213,6 @@ def get_jar(pickling_table, empty_jars):
     else:
         print("new jar did not get assigned")
         return(new_jar)
-    
 
 
 def test(usrinput):
@@ -310,14 +308,16 @@ def consider_pickling_table():
     # press = storage_areas[0]
     # fridge = storage_areas[1]
     # pickling_table = storage_areas[2]
-    jar_present = False
-    if pickling_table.count("jar") > 0:
-        jar_present = True
+    jar_on_table = False
+    for item in pickling_table:
+        if isinstance(item, Jar):
+            jar_on_table = True
+    
 
-    if jar_present:
+    if jar_on_table is False:
         options = [1,2,3,4,5,6,7]
     else:
-        options = [1,2,3,4,5,6,7,8,9]
+        options = [1,2,3,4,5,6,7,8,9,10,11]
 
     print("You approach the pickling table.")
     print("What would you like to do?")
@@ -332,7 +332,7 @@ def consider_pickling_table():
     print("5. Wash item in sink")
     print("6. Boil an item for 15m in hot water")
     
-    if jar_present:
+    if jar_on_table:
         print("7. Open jar lid")
         print("8. Close jar lid")
         print("9. Put items in jar")
