@@ -217,6 +217,7 @@ def get_jar(pickling_table, empty_jars):
             break
     if new_jar is not None:
         pickling_table.append(new_jar)
+        current_jar = new_jar
         # writelabel = input("Please write a descriptive label for your chosen jar:\n")
         # new_jar.label = writelabel
         # print(new_jar.describe())
@@ -577,6 +578,8 @@ def choose_to_insert():
             print(jar.contents)
 
 
+def study_jar_contents():
+    
 
 
 
