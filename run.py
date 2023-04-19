@@ -409,6 +409,9 @@ def study_press():
 # Pickling table operations
 
 def survey_table(pickling_table):
+    """
+    function to list contents of pickling table
+    """
     print("You survey the pickling table.")
     if pickling_table == []:
         print("The pickling table is devoid of items at present.\n")
@@ -422,6 +425,9 @@ def survey_table(pickling_table):
 # def put_out(item): redundant see press ops
 
 def what_to_wash():
+    """
+    function to choose what to wash
+    """
     options = []
     if pickling_table != []:
         print("What item would you like to wash?\n")
@@ -455,11 +461,17 @@ def what_to_wash():
 
 
 def wash(item):
+    """
+    function to wash items
+    """
     item.washed = True
     print(pickling_table[0].describe())
 
 
 def what_to_boil():
+    """
+    function to choose what to boil
+    """
     options = []
     if pickling_table != []:
         print("What item would you like to boil?\n")
@@ -490,8 +502,10 @@ def what_to_boil():
         print("There is nothing on the pickling table to boil")
 
 
-
 def boil(item):
+    """
+    function to boil items
+    """
     item.disinfected = True
     print(pickling_table[0].describe())
 
