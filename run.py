@@ -384,7 +384,17 @@ def consider_pickling_table():
         for item in pickling_table:
             if isinstance(item, Jar):
                 choose_to_insert()
+    elif choice == "10":
+        study_jar_contents()
+    elif choice == "11":
+        current_jar.agitated = True
+    elif choice == "12":
+        fridge.append(current_jar)
+        for item in pickling_table:
+            if isinstance(item, Jar):
+                pickling_table.remove(item)
     consider_pickling_table()
+
 
 #########################################################
 #########################################################
@@ -433,6 +443,7 @@ def study_press():
         cucumber = Cucumber()
         for i in range(5):
             pickling_table.append(cucumber)
+    
     
 
 
@@ -579,7 +590,7 @@ def choose_to_insert():
 
 
 def study_jar_contents():
-    
+    print(current_jar.contents)
 
 
 
