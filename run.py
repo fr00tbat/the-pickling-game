@@ -311,18 +311,9 @@ def consider_fridge():
         consider_fridge()
 
     if choice == "1":
-        print("Your fridge proudly displays its jar collection:")
-        print(fridge)
-        print("\n")
+        look_in_fridge()
     elif choice == "2":
-        # prompt user
-        # display jars
-        # choose a jar
-        # eat pickle
-        # print results
-        print("Pick a jar from the fridge:")
-        print(fridge)
-        print("\n")
+        pick_a_jar()
     if choice == "3":
         consider_pickling_room()
     else:
@@ -412,6 +403,33 @@ def consider_pickling_table():
     elif choice == "13":
         jar_stats()
     consider_pickling_table()
+
+
+#########################################################
+#########################################################
+#########################################################
+# Fridge operations
+
+def look_in_fridge():
+    """
+    Function to look in fridge
+    """
+    # print label of each jar
+    # details - batch, label, age?
+    print("Your fridge proudly displays its jar collection:")
+    print(fridge)
+    print("\n")
+
+
+def pick_a_jar()
+    # prompt user
+    # display jars
+    # choose a jar
+    # eat pickle
+    # print results
+    print("Pick a jar from the fridge:")
+    print(fridge)
+    print("\n")
 
 
 #########################################################
