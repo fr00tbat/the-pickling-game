@@ -88,7 +88,8 @@ class Jar:
             "label": self.label,
             "contents": self.contents,
             "lid": self.lid,
-            "disinfected": self.disinfected
+            "disinfected": self.disinfected,
+            "agitated": self.agitated
         }
         return description
 
@@ -108,13 +109,13 @@ class Jar:
         - a list of spices
         - a list of brine ingredients
         """
-        
+
         self.contents.append(chosen_item)
         for item in pickling_table:
             if item == chosen_item:
                 pickling_table.remove(item)
 
-    # def fill(items):
+    # def fill(items): # insert for liquids
 
 
 class Cucumber:
@@ -128,11 +129,11 @@ class Cucumber:
     def __str__(self):
         return f"cucumber"
 
-    
+
     def __repr__(self):
         return f"cucumber"
         # return f"cucumber: ({self.pickledeness}; {self.crunch}; {self.washed})"
-    
+
 
     def describe(self):
         """get description cucumber"""
@@ -217,7 +218,7 @@ def get_jar(pickling_table, empty_jars):
             break
     if new_jar is not None:
         pickling_table.append(new_jar)
-        current_jar = new_jar
+        current_jar = pickling_table[-1]
         # writelabel = input("Please write a descriptive label for your chosen jar:\n")
         # new_jar.label = writelabel
         # print(new_jar.describe())
@@ -308,7 +309,7 @@ def consider_fridge():
     choice = get_input(options)
     if choice is False:
         consider_fridge()
-    
+
     if choice == "3":
         consider_pickling_room()
 
@@ -317,20 +318,20 @@ def consider_pickling_table():
     """
     Give user options for pickling table
     """
-    
     # press = storage_areas[0]
     # fridge = storage_areas[1]
     # pickling_table = storage_areas[2]
     jar_on_table = False
+    global current_jar
     for item in pickling_table:
         if isinstance(item, Jar):
             jar_on_table = True
-    
+            current_jar = item
 
     if jar_on_table is False:
         options = [1,2,3,4,5,6,7]
     else:
-        options = [1,2,3,4,5,6,7,8,9,10,11,12]
+        options = [1,2,3,4,5,6,7,8,9,10,11,12,13]
 
     print("You approach the pickling table.")
     print("What would you like to do?")
@@ -338,13 +339,11 @@ def consider_pickling_table():
 
     print("1. Move across the pickling room")
     print("2. Survey pickling table items")
-    
     print("3. Pick out an empty jar")
     print("4. Put out ingredients")
-
     print("5. Wash item in sink")
     print("6. Boil an item for 15m in hot water")
-    
+
     if jar_on_table:
         print("7. Open jar lid")
         print("8. Close jar lid")
@@ -352,6 +351,7 @@ def consider_pickling_table():
         print("10. Study items in jar")
         print("11. Shake jar")
         print("12. Store jar")
+        print("13. Jar stats")
 
     choice = get_input(options)
     # rerun current function on invalid input
@@ -387,12 +387,14 @@ def consider_pickling_table():
     elif choice == "10":
         study_jar_contents()
     elif choice == "11":
-        current_jar.agitated = True
+        shake_jar()
     elif choice == "12":
         fridge.append(current_jar)
         for item in pickling_table:
             if isinstance(item, Jar):
                 pickling_table.remove(item)
+    elif choice == "13":
+        jar_stats()
     consider_pickling_table()
 
 
@@ -443,8 +445,8 @@ def study_press():
         cucumber = Cucumber()
         for i in range(5):
             pickling_table.append(cucumber)
-    
-    
+
+
 
 
 
@@ -465,8 +467,7 @@ def survey_table(pickling_table):
         print(pickling_table)
         return pickling_table
         # print("\n")
-    
-    
+
 
 # def put_out(item): redundant see press ops
 
@@ -478,7 +479,7 @@ def what_to_wash():
     if pickling_table != []:
         print("What item would you like to wash?\n")
         survey_table(pickling_table)
-        
+
         for i in range(len(pickling_table)):
             if isinstance(pickling_table[i], (Cucumber, Jar)):
                 print(f"" + str(i) + ". " + pickling_table[i].__repr__())
@@ -486,7 +487,7 @@ def what_to_wash():
                 print(f"" + str(i) + ". " + pickling_table[i])
         for i in range(len(pickling_table)):
             options.append(i)
-        
+
         choice = get_input(options)
         choice = int(choice)
         print(f"1.choice is : " + str(choice))
@@ -511,7 +512,7 @@ def wash(item):
     function to wash items
     """
     item.washed = True
-    print(pickling_table[0].describe())
+    print(item.describe())
 
 
 def what_to_boil():
@@ -522,7 +523,7 @@ def what_to_boil():
     if pickling_table != []:
         print("What item would you like to boil?\n")
         survey_table(pickling_table)
-        
+
         for i in range(len(pickling_table)):
             if isinstance(pickling_table[i], (Jar, Cucumber)):
                 print(f"" + str(i) + ". " + pickling_table[i].__repr__())
@@ -530,7 +531,7 @@ def what_to_boil():
                 print(f"" + str(i) + ". " + pickling_table[i])
         for i in range(len(pickling_table)):
             options.append(i)
-        
+
         choice = get_input(options)
         choice = int(choice)
         # print(f"1.choice is : " + str(choice)) # test
@@ -553,7 +554,7 @@ def boil(item):
     function to boil items
     """
     item.disinfected = True
-    print(pickling_table[0].describe())
+    print(item.describe())
 
 
 def choose_to_insert():
@@ -586,12 +587,29 @@ def choose_to_insert():
         elif (choice >= 0 and choice <= len(table_less_jars)):
             print(table_less_jars[choice])
             jar.insert(table_less_jars[choice])
+            print("The jar contents are as follows:")
             print(jar.contents)
 
 
 def study_jar_contents():
+    global current_jar
+    print("The jar contains the following:")
     print(current_jar.contents)
 
+
+def shake_jar():
+    global current_jar
+    if current_jar.lid == "on":
+        current_jar.agitated = True
+    elif current_jar.lid == "off":
+        print("Peter Piper's pickled pepper! You forgot to put the lid back on!")
+        print(f"A mix of {current_jar.contents} covers the room, and you.\n")
+        current_jar.contents = []
+
+
+def jar_stats():
+    global current_jar
+    print(current_jar.describe())
 
 
 #########################################################
