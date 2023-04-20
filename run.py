@@ -1,6 +1,7 @@
 """
 The Pickling Game
 """
+import pprint
 
 
 #########################################################
@@ -32,7 +33,7 @@ def main():
 
     # storage & display areas
     press = [spoon, salt, sugar, water, vinegar, garlic, dill, mustard_seeds]
-    fridge = [[], [], []]
+    fridge = []
     pickling_table = []
     storage_areas = [press, fridge, pickling_table]
 
@@ -72,6 +73,8 @@ class Jar:
         self.lid = "on"
         self.disinfected = False
         self.agitated = False
+        self.age = 0
+        self.timestamp = 0
 
     def __str__(self):
         return f"jar with label {self.label}"
@@ -89,9 +92,20 @@ class Jar:
             "contents": self.contents,
             "lid": self.lid,
             "disinfected": self.disinfected,
-            "agitated": self.agitated
+            "agitated": self.agitated,
+            "age": self.age
+        #    "made-on:" self.timestamp
         }
         return description
+
+
+    def describe_short = {
+        """get short description of jar"""
+        "batch": self.batch,
+        "age": self.age,
+        "label": self.label
+    }
+
 
     def open(self):
         """remove jar lid"""
@@ -418,18 +432,80 @@ def look_in_fridge():
     # details - batch, label, age?
     print("Your fridge proudly displays its jar collection:")
     print(fridge)
+    jar_options = []
+
+    for i in range(len(fridge)):
+        if isinstance(fridge[i], Jar):
+            print(f"\n{i}. {fridge[i].describe_short()}")
+            jar_options.append(i,j)
+            """
+            print(f"batch: {fridge[i].describe().get('batch')}")
+            print(f"age: {fridge[i].describe().get('age')}")
+            print(f"label: {fridge[i].describe().get('label')}")
+            """
+            # print(print(f"contents: {fridge[i].describe().get('contents')}"))
     print("\n")
+    return jar_options
 
 
-def pick_a_jar()
+def pick_a_jar():
+    """
+    Function to pick jar to taste a pickle from
+    """
     # prompt user
     # display jars
     # choose a jar
     # eat pickle
     # print results
+    jar_options = []
     print("Pick a jar from the fridge:")
-    print(fridge)
+    jar_options = look_in_fridge()
+    print("Which jar would you like to taste a pickle from?")
+    choice = get_input(options)
     print("\n")
+
+
+def populate_test_jars_fridge():
+    global empty_jars
+    global current_jar
+    global fridge
+    for i in range(5):
+        current_jar = empty_jars[i]
+        empty_jars[i] = 0
+        current_jar.batch = i
+        current_jar.label = "Here's one I made earlier"
+        current_jar.contents = [salt, sugar, water, vinegar, garlic, dill, mustard_seeds]
+        current_jar.disinfected = True
+        current_jar.agitated = True
+        current_jar.age = 5
+        for k in range(5):
+            cucumber = Cucumber()
+            current_jar.contents.append(cucumber)
+        for j in range(5):
+            current_jar.contents[7+j].pickledeness = "pickled"
+            current_jar.contents[7+j].crunch = "very crunchy"
+            current_jar.contents[7+j].washed = "washed"
+        fridge.append(current_jar)
+    # test print
+    # print(fridge)
+    # for i in range(len(fridge[0])):
+    #    print(fridge[0][i].describe())
+    # print(f"empty jars: {empty_jars}")
+
+    """
+    self.size = "medium"
+    self.batch = batch
+    self.label = ""
+    self.contents = []
+    self.lid = "on"
+    self.disinfected = False
+    self.agitated = False
+
+
+    self.pickledeness = "fresh"
+    self.crunch = "very crunchy"
+    self.washed = "unwashed"
+    """
 
 
 #########################################################
@@ -724,7 +800,7 @@ spoon = "spoon"
 
 # storage & display areas
 press = [spoon, salt, sugar, water, vinegar, garlic, dill, mustard_seeds]
-fridge = [[], [], []]
+fridge = []
 pickling_table = []
 # storage_areas = [press, fridge, pickling_table]
 
@@ -735,5 +811,5 @@ empty_jars = spawn_jars(empty_jars)
 current_jar = None
 
 
-
+populate_test_jars_fridge()
 main()
