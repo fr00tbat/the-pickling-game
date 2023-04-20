@@ -94,17 +94,17 @@ class Jar:
             "disinfected": self.disinfected,
             "agitated": self.agitated,
             "age": self.age
-        #    "made-on:" self.timestamp
+            # "made-on:" self.timestamp
         }
         return description
 
-
-    def describe_short = {
+    def describe_short(self):
         """get short description of jar"""
-        "batch": self.batch,
-        "age": self.age,
-        "label": self.label
-    }
+        description = {
+            "batch": self.batch,
+            "age": self.age,
+            "label": self.label
+        }
 
 
     def open(self):
@@ -139,6 +139,9 @@ class Cucumber:
         self.pickledeness = "fresh"
         self.crunch = "very crunchy"
         self.washed = "unwashed"
+        self.tastiness = "moderate"
+        self.contaminated = False
+
 
     def __str__(self):
         return f"cucumber"
@@ -313,6 +316,8 @@ def consider_fridge():
     """
     Give user options for fridge
     """
+    global current_jar
+    current_pickle = 0
     options = [1,2,3]
     print("You crack open your gently humming fridge.")
     print("What would you like to do?")
@@ -327,7 +332,9 @@ def consider_fridge():
     if choice == "1":
         look_in_fridge()
     elif choice == "2":
-        pick_a_jar()
+        current_jar = pick_a_jar()
+        current_pickle = get_pickle(current_jar)
+        eat_pickle(current_pickle)
     if choice == "3":
         consider_pickling_room()
     else:
@@ -436,8 +443,12 @@ def look_in_fridge():
 
     for i in range(len(fridge)):
         if isinstance(fridge[i], Jar):
+            #
+            print("Test")
+            print(fridge[i].describe())
+            #
             print(f"\n{i}. {fridge[i].describe_short()}")
-            jar_options.append(i,j)
+            jar_options.append(i)
             """
             print(f"batch: {fridge[i].describe().get('batch')}")
             print(f"age: {fridge[i].describe().get('age')}")
@@ -452,6 +463,7 @@ def pick_a_jar():
     """
     Function to pick jar to taste a pickle from
     """
+    global current_jar
     # prompt user
     # display jars
     # choose a jar
@@ -460,9 +472,34 @@ def pick_a_jar():
     jar_options = []
     print("Pick a jar from the fridge:")
     jar_options = look_in_fridge()
-    print("Which jar would you like to taste a pickle from?")
-    choice = get_input(options)
-    print("\n")
+    print("Which jar would you like to taste a pickle from? \n")
+    choice = get_input(jar_options)
+    current_jar = fridge[choice]
+    #
+    print("Test")
+    print(current_jar.describe_short())
+    #
+    return current_jar
+
+
+def get_pickle(jar):
+    """
+    Function to get a pickle from a jar
+    """
+    current_pickle = 0
+    for i in range(len(jar.contents)):
+        if isinstance(jar.contents[i], Jar):
+            current_pickle = jar.contents[i]
+            jar.contents[i].remove()
+            break
+    print("You get a pickle from the jar.")
+    return current_pickle
+
+
+def eat_pickle(pickle):
+    print("You eat the pickle:")
+    print(pickle.describe())
+
 
 
 def populate_test_jars_fridge():
