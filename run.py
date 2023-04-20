@@ -310,8 +310,24 @@ def consider_fridge():
     if choice is False:
         consider_fridge()
 
+    if choice == "1":
+        print("Your fridge proudly displays its jar collection:")
+        print(fridge)
+        print("\n")
+    elif choice == "2":
+        # prompt user
+        # display jars
+        # choose a jar
+        # eat pickle
+        # print results
+        print("Pick a jar from the fridge:")
+        print(fridge)
+        print("\n")
     if choice == "3":
         consider_pickling_room()
+    else:
+        consider_fridge()
+    consider_fridge()
 
 
 def consider_pickling_table():
