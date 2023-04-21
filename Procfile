@@ -1,0 +1,1 @@
+web: gunicorn the-pickling-game.wsgi
