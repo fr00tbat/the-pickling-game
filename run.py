@@ -15,43 +15,6 @@ def main():
     """
     location = "pickling room"
 
-    """
-    # food items and combined ingredient arrays
-    garlic = "garlic"
-    dill = "dill"
-    mustard_seeds = "mustard seeds"
-    spices = [garlic, dill, mustard_seeds]
-
-    salt = "salt"
-    sugar = "sugar"
-    water = "water"
-    vinegar = "vinegar"
-    pickling_brine = [salt, sugar, water, vinegar]
-
-    # cutlery & crockery
-    spoon = "spoon"
-
-    # storage & display areas
-    press = [spoon, salt, sugar, water, vinegar, garlic, dill, mustard_seeds]
-    fridge = []
-    pickling_table = []
-    storage_areas = [press, fridge, pickling_table]
-
-    game_state = [storage_areas, location]
-
-    empty_jars = []
-    empty_jars = spawn_jars(empty_jars)
-    """
-
-    # jar stuff
-    # jar_funct_output = get_jar(pickling_table, empty_jars)
-    # pickling_table = jar_funct_output[0]
-    # empty_jars = jar_funct_output[1]
-
-    # print(get_jar(pickling_table, empty_jars).describe())
-    # print(pickling_table)
-    # print(empty_jars)
-
     move_to(location)
 
 
@@ -81,7 +44,6 @@ class Jar:
 
     def __repr__(self):
         return f"jar"
-        # return f"jar, {self.batch}, {self.label}, {self.contents}, {self.lid}, {self.disinfected}"
 
     def describe(self):
         """get description of jar"""
@@ -118,8 +80,6 @@ class Jar:
             if item == chosen_item:
                 pickling_table.remove(item)
 
-    # def fill(items): # insert for liquids
-
 
 class Cucumber:
     """Cucumber class"""
@@ -138,7 +98,6 @@ class Cucumber:
 
     def __repr__(self):
         return f"cucumber"
-        # return f"cucumber: ({self.pickledeness}; {self.crunch}; {self.washed})"
 
 
     def describe(self):
@@ -173,9 +132,6 @@ def spawn_jars(empty_jars):
     jars = (jar1, jar2, jar3, jar4, jar5, jar6, jar7, jar8, jar9, jar10, jar11, jar12)
     for jar in jars:
         empty_jars.append(jar)
-    # print(jars)
-    # print(jar1)
-    # print(jar1.describe())
     print("jars spawned")
     return empty_jars
 
@@ -216,7 +172,6 @@ def get_jar(pickling_table, empty_jars):
     for i in range(len(emptjars)):
         print(isinstance(emptjars[i], Jar))
         if isinstance(emptjars[i], Jar):
-            # print("reached here") # test
             new_jar = emptjars[i]
             print(new_jar)
             emptjars[i] = 0
@@ -225,10 +180,10 @@ def get_jar(pickling_table, empty_jars):
     if new_jar is not None:
         pickling_table.append(new_jar)
         current_jar = pickling_table[-1]
-        # writelabel = input("Please write a descriptive label for your chosen jar:\n")
-        # new_jar.label = writelabel
-        # print(new_jar.describe())
-        # print(pickling_table)
+        writelabel = input("Please write a descriptive label for your chosen jar:\n")
+        new_jar.label = writelabel
+        print(new_jar.describe())
+        print(pickling_table)
         return(pickling_table, emptjars)
     else:
         print("new jar did not get assigned")
@@ -335,9 +290,6 @@ def consider_pickling_table():
     """
     Give user options for pickling table
     """
-    # press = storage_areas[0]
-    # fridge = storage_areas[1]
-    # pickling_table = storage_areas[2]
     jar_on_table = False
     global current_jar
     for item in pickling_table:
@@ -432,17 +384,8 @@ def look_in_fridge():
     for i in range(len(fridge)):
         if isinstance(fridge[i], Jar):
             print(f"\n{i}. {fridge[i].describe()}")
-            jar_options.append(int(i))
-            """
-            print(f"batch: {fridge[i].describe().get('batch')}")
-            print(f"age: {fridge[i].describe().get('age')}")
-            print(f"label: {fridge[i].describe().get('label')}")
-            """
-            # print(print(f"contents: {fridge[i].describe().get('contents')}"))
+            jar_options.append(int(i))            
     print("\n")
-    #
-    print(f"jar options are: {jar_options}")
-    #
     return jar_options
 
 
@@ -461,16 +404,7 @@ def pick_a_jar():
     jar_options = look_in_fridge()
     print("Which jar would you like to taste a pickle from? \n")
     choice = int(get_input(jar_options))
-    #
-    print("test")
-    print(choice)
-    print(fridge[choice])
-    #
     current_jar = fridge[choice]
-    #
-    print("Test")
-    print(current_jar.describe())
-    #
     return current_jar
 
 
@@ -479,19 +413,31 @@ def get_pickle(jar):
     Function to get a pickle from a jar
     """
     global current_pickle
+    pickle_index = 0
+    pickle_present = True
     for i in range(len(jar.contents)):
-        if isinstance(jar.contents[i], Jar):
+        if isinstance(jar.contents[i], Cucumber):
             current_pickle = jar.contents[i]
-            jar.contents[i].remove()
+            pickle_index = i
             break
+        # if none of the contents are of Class Cucumber:
+        if i == len(jar.contents):
+            pickle_present = False
+            print("There are no pickles left in this jar!")
+    
     print("You get a pickle from the jar.")
+    # pickles in jar should be removed as eaten
+    jar.contents.remove(jar.contents[pickle_index])
     return current_pickle
 
 
 def eat_pickle(pickle):
+    """Eat a pickle from the jar"""
+    # Fix needed: needs to return current_pickle not None
     global current_pickle
-    print("You eat the pickle:")
+    print("You eat the pickle:\n")
     print(pickle.describe())
+    print("\n")
 
 
 
@@ -516,26 +462,7 @@ def populate_test_jars_fridge():
             current_jar.contents[7+j].crunch = "very crunchy"
             current_jar.contents[7+j].washed = "washed"
         fridge.append(current_jar)
-    # test print
-    # print(fridge)
-    # for i in range(len(fridge[0])):
-    #    print(fridge[0][i].describe())
-    # print(f"empty jars: {empty_jars}")
 
-    """
-    self.size = "medium"
-    self.batch = batch
-    self.label = ""
-    self.contents = []
-    self.lid = "on"
-    self.disinfected = False
-    self.agitated = False
-
-
-    self.pickledeness = "fresh"
-    self.crunch = "very crunchy"
-    self.washed = "unwashed"
-    """
 
 
 #########################################################
@@ -609,7 +536,6 @@ def survey_table(pickling_table):
         # print("\n")
 
 
-# def put_out(item): redundant see press ops
 
 def what_to_wash():
     """
@@ -634,7 +560,7 @@ def what_to_wash():
         print(type(choice))
         if choice is False:
             what_to_wash()
-        # if choice is an index in the pickling_table list    
+        # if choice is an index in the pickling_table list:    
         elif (choice >= 0 and choice <= len(pickling_table)):
             print(f"2.choice is : " + str(choice))
             if isinstance(pickling_table[int(choice)], Cucumber):
@@ -674,13 +600,10 @@ def what_to_boil():
 
         choice = get_input(options)
         choice = int(choice)
-        # print(f"1.choice is : " + str(choice)) # test
-        # print(type(choice)) # test
         if choice is False:
             what_to_boil()
         # if choice is an index in the pickling_table list    
         elif (choice >= 0 and choice <= len(pickling_table)):
-            # print(f"2.choice is : " + str(choice)) # test
             if isinstance(pickling_table[int(choice)], Jar):
                 boil(pickling_table[int(choice)])
             else:
@@ -764,7 +687,6 @@ def get_input(options):
     print("\n- enter a number for one of the options: ")
     choice = input("**********************************\n\n")
 
-    #print(type(int(choice)))
     validated = validate_input(choice, options)
     if validated is True:
         print("\n - A valid choice!\n")
@@ -822,7 +744,6 @@ sugar = "sugar"
 water = "water"
 vinegar = "vinegar"
 pickling_brine = [salt, sugar, water, vinegar]
-
 
 
 # cutlery & crockery
