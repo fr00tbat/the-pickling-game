@@ -1,1 +1,1 @@
-web: gunicorn the-pickling-game.wsgi
+web: gunicorn the-pickling-game.wsgi:application
