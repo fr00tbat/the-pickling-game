@@ -1,0 +1,38 @@
+#########################################
+# Quick pickling- (Jamie Oliver recipe) #
+#########################################
+
+1. Boil jar + lid + filling utensil
+2. wash cuces (optional cut up cuces)
+ 
+3. put in jar: cuces, garlic, dill
+4. put in jar: 125ml water, 250ml vinegar, salt, sugar(optional)
+
+5. Close lid + Give good shake
+[optional- put in jar: small dish + rock [to weight down + submerge]]
+
+[store on fridge shelf]
+6. wait[10 hours]
+[taste()]
+
+i. Taste pickles
+if (followed recipe instructions){
+    pickles taste good
+}else{
+    pickles taste terrible
+}
+
+7. Wait 24-48 hrs [pickling complete]
+[exp: 8 weeks]
+[4 wks crunchy + sharp]
+[4 weeks relaxed and mellow, but with nice vinegar kick]
+8. Store in fridge
+
+
+*******
+common mistakes:
+- not to sterilise the jar
+- not to submerge the veg
+- not to put in fridge
+- better if left for 2 days
+*******

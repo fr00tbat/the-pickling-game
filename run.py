@@ -170,10 +170,10 @@ def get_jar(pickling_table, empty_jars):
     emptjars = empty_jars
     new_jar = None
     for i in range(len(emptjars)):
-        print(isinstance(emptjars[i], Jar))
+        # print(isinstance(emptjars[i], Jar))
         if isinstance(emptjars[i], Jar):
             new_jar = emptjars[i]
-            print(new_jar)
+            # print(new_jar)
             emptjars[i] = 0
             empty_jars = emptjars
             break
@@ -183,7 +183,7 @@ def get_jar(pickling_table, empty_jars):
         writelabel = input("Please write a descriptive label for your chosen jar:\n")
         new_jar.label = writelabel
         print(new_jar.describe())
-        print(pickling_table)
+        print(f"Pickling table contents at present:\n {pickling_table}\n")
         return(pickling_table, emptjars)
     else:
         print("new jar did not get assigned")
@@ -300,7 +300,7 @@ def consider_pickling_table():
     if jar_on_table is False:
         options = [1,2,3,4,5,6,7]
     else:
-        options = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+        options = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 
     print("You approach the pickling table.")
     print("What would you like to do?")
@@ -321,6 +321,7 @@ def consider_pickling_table():
         print("11. Shake jar")
         print("12. Store jar")
         print("13. Jar stats")
+        print("14. Cookbook")
 
     choice = get_input(options)
     # rerun current function on invalid input
@@ -364,6 +365,8 @@ def consider_pickling_table():
                 pickling_table.remove(item)
     elif choice == "13":
         jar_stats()
+    elif choice =="14":
+        read_cookbook()
     consider_pickling_table()
 
 
@@ -673,6 +676,14 @@ def shake_jar():
 def jar_stats():
     global current_jar
     print(current_jar.describe())
+
+
+def read_cookbook():
+    f = open('quick_pickling_recipe.txt', 'r')
+    file_contents = f.read()
+    print(file_contents)
+    f.close()
+
 
 
 #########################################################
