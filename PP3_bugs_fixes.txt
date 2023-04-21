@@ -1,0 +1,158 @@
+# Bugs, fixes, Issues
+
+
+- get_jar function
+    -managing lists
+    -trying to access an index in the list properly
+    -item shouldn't be assigned to 'None'
+    -lists are tuples for some reason
+[kinda working]
+[didn't expect the memory addresses, as the objects have names to be referred to]
+>Fix: __repr__ and __str__ methods
+
+
+- passing the game state around, passing the parameter
+getting:
+TypeError: consider_pickling_table() missing 1 required positional argument: 'storage_areas'
+> on lookup, this can be to do with redundant passing of variables within a class to its methods, when it has an init method that should take care of this already
+but I don't understand the connnection here
+> It still needs you to pass it the variable via a parameter though, I'm unsure exactly of what's wrong still.
+Fix: Just using global variables for now
+
+
+- study_jar() functions not working quite right - 
+> really it's current_jar variable that's not working right
+>gettin gNone on printing (where it prints class __str__ from the get_jar function)
+   
+
+
+- pickling table: jar, no other items
+if input "want to insert items into jar"
+- input 0 as choice
+- get error
+
+
+- tidy up test prints
+
+
+- view recipe/cookbook
+
+
+- only insert items items in jar if lid is off
+
+
+- disappearing cucumbers (putting in jar)
+
+
+-*********************
+
+building on Heroku
+
+App not compatible with buildpack: https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku/python.tgz
+
+       More info: https://devcenter.heroku.com/articles/buildpacks#detection-failure
+
+ !     Push failed
+
+
+
+
+
+
+
+
+
+
+
+
+old code snippets:
+basic error checking before validation function:
+"""
+        print("Invalid choice; please enter one of the choice numbers given above when given the prompt.")
+        time.sleep(3)
+        tmp = sp.call('clear', shell=True)
+"""
+
+
+
+
+
+******
+
+eg error/bug fix:
+washing cucumber:
+*********
+
+What item would you like to wash?
+
+You survey the pickling table.
+The items on the table are as follows:
+['spoon', 'salt', 'sugar', 'water', 'vinegar', 'garlic', 'dill', 'mustard seeds', cucumber, cucumber, cucumber, cucumber, cucumber]
+0. spoon
+1. salt
+2. sugar
+3. water
+4. vinegar
+5. garlic
+6. dill
+7. mustard seeds
+8. cucumber
+9. cucumber
+10. cucumber
+11. cucumber
+12. cucumber
+
+- enter a number for one of the options: 
+**********************************
+
+8
+
+ - A valid choice!
+
+
+1.choice is : 8
+<class 'int'>
+2.choice is : 8
+Traceback (most recent call last):
+  File "run.py", line 684, in <module>
+    main()
+  File "run.py", line 54, in main
+    move_to(location)
+  File "run.py", line 259, in move_to
+    consider_pickling_room()
+  File "run.py", line 290, in consider_pickling_room
+    consider_pickling_table()
+  File "run.py", line 361, in consider_pickling_table
+    consider_pickling_room()
+  File "run.py", line 292, in consider_pickling_room
+    consider_fridge()
+  File "run.py", line 313, in consider_fridge
+    consider_pickling_room()
+  File "run.py", line 290, in consider_pickling_room
+    consider_pickling_table()
+  File "run.py", line 394, in consider_pickling_table
+    consider_pickling_table()
+  File "run.py", line 394, in consider_pickling_table
+    consider_pickling_table()
+  File "run.py", line 394, in consider_pickling_table
+    consider_pickling_table()
+  [Previous line repeated 2 more times]
+  File "run.py", line 369, in consider_pickling_table
+    what_to_wash()
+  File "run.py", line 497, in what_to_wash
+    wash(pickling_table[int(choice)])
+  File "run.py", line 511, in wash
+    print(pickling_table[0].describe())
+AttributeError: 'str' object has no attribute 'describe'
+gitpod /workspace/the-pickling-game (main) $ ^C
+
+
+
+
+
+
+
+
+
+
+

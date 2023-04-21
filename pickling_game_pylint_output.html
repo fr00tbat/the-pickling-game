@@ -1,0 +1,288 @@
+<!-- 
+initial linter output fixes
+- captialised variables (ie constants: LOCATION, FRIDGE, igredients, ingreidient lists, etc)
+- get rid of whitepace chars
+- get rid of unnecessary new lines
+
+
+-->
+
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:12:1: E0001: Parsing failed: 'cannot assign to operator (<unknown>, line 12)' (syntax-error)
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:37:0: C0301: Line too long (122/100) (line-too-long)
+pickling_code_copy.py:102:0: C0301: Line too long (106/100) (line-too-long)
+pickling_code_copy.py:36:4: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:40:4: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:40:4: E0211: Method 'open' has no argument (no-method-argument)
+pickling_code_copy.py:41:8: E0602: Undefined variable 'self' (undefined-variable)
+pickling_code_copy.py:43:4: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:43:4: E0211: Method 'close' has no argument (no-method-argument)
+pickling_code_copy.py:44:8: E0602: Undefined variable 'self' (undefined-variable)
+pickling_code_copy.py:51:0: C0115: Missing class docstring (missing-class-docstring)
+pickling_code_copy.py:56:4: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:51:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+pickling_code_copy.py:67:8: W0621: Redefining name 'LOCATION' from outer scope (line 7) (redefined-outer-name)
+pickling_code_copy.py:67:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:71:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:75:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:76:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:67:8: W0612: Unused variable 'LOCATION' (unused-variable)
+pickling_code_copy.py:101:8: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:152:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:188:11: W0705: Catching previously caught exception type ValueError (duplicate-except)
+pickling_code_copy.py:170:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+pickling_code_copy.py:181:11: C0121: Comparison 'choiceisoption == False' should be 'choiceisoption is False' if checking for the singleton value False, or 'not choiceisoption' if testing for falsiness (singleton-comparison)
+pickling_code_copy.py:185:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:188:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:195:9: W0622: Redefining built-in 'input' (redefined-builtin)
+pickling_code_copy.py:212:0: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:4:0: W0611: Unused import time (unused-import)
+pickling_code_copy.py:5:0: W0611: Unused subprocess imported as sp (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 6.25/10 (previous run: 5.55/10, +0.70)
+
+***************
+
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:12:1: E0001: Parsing failed: 'cannot assign to operator (<unknown>, line 12)' (syntax-error)
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:37:0: C0301: Line too long (122/100) (line-too-long)
+pickling_code_copy.py:102:0: C0301: Line too long (106/100) (line-too-long)
+pickling_code_copy.py:36:4: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:40:4: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:40:4: E0211: Method 'open' has no argument (no-method-argument)
+pickling_code_copy.py:41:8: E0602: Undefined variable 'self' (undefined-variable)
+pickling_code_copy.py:43:4: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:43:4: E0211: Method 'close' has no argument (no-method-argument)
+pickling_code_copy.py:44:8: E0602: Undefined variable 'self' (undefined-variable)
+pickling_code_copy.py:51:0: C0115: Missing class docstring (missing-class-docstring)
+pickling_code_copy.py:56:4: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:51:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+pickling_code_copy.py:67:8: W0621: Redefining name 'LOCATION' from outer scope (line 7) (redefined-outer-name)
+pickling_code_copy.py:67:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:71:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:75:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:76:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:67:8: W0612: Unused variable 'LOCATION' (unused-variable)
+pickling_code_copy.py:101:8: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:152:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:188:11: W0705: Catching previously caught exception type ValueError (duplicate-except)
+pickling_code_copy.py:170:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+pickling_code_copy.py:181:11: C0121: Comparison 'choiceisoption == False' should be 'choiceisoption is False' if checking for the singleton value False, or 'not choiceisoption' if testing for falsiness (singleton-comparison)
+pickling_code_copy.py:185:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:188:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:195:9: W0622: Redefining built-in 'input' (redefined-builtin)
+pickling_code_copy.py:212:0: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:4:0: W0611: Unused import time (unused-import)
+pickling_code_copy.py:5:0: W0611: Unused subprocess imported as sp (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 6.25/10 (previous run: 5.55/10, +0.70)
+
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ date
+Fri 14 Apr 2023 15:27:28 IST
+
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:44:23: E0001: Parsing failed: 'inconsistent use of tabs and spaces in indentation (<unknown>, line 44)' (syntax-error)
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:29:0: C0303: Trailing whitespace (trailing-whitespace)
+pickling_code_copy.py:30:0: C0303: Trailing whitespace (trailing-whitespace)
+pickling_code_copy.py:40:0: C0301: Line too long (122/100) (line-too-long)
+pickling_code_copy.py:107:0: C0301: Line too long (106/100) (line-too-long)
+pickling_code_copy.py:56:0: C0115: Missing class docstring (missing-class-docstring)
+pickling_code_copy.py:61:4: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:56:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+pickling_code_copy.py:72:8: W0621: Redefining name 'LOCATION' from outer scope (line 7) (redefined-outer-name)
+pickling_code_copy.py:72:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:76:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:80:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:81:8: C0103: Variable name "LOCATION" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:72:8: W0612: Unused variable 'LOCATION' (unused-variable)
+pickling_code_copy.py:106:8: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:157:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:193:11: W0705: Catching previously caught exception type ValueError (duplicate-except)
+pickling_code_copy.py:175:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+pickling_code_copy.py:186:11: C0121: Comparison 'choiceisoption == False' should be 'choiceisoption is False' if checking for the singleton value False, or 'not choiceisoption' if testing for falsiness (singleton-comparison)
+pickling_code_copy.py:190:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:193:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:200:9: W0622: Redefining built-in 'input' (redefined-builtin)
+pickling_code_copy.py:217:0: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:4:0: W0611: Unused import time (unused-import)
+pickling_code_copy.py:5:0: W0611: Unused subprocess imported as sp (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 8.00/10 (previous run: 7.83/10, +0.17)
+
+<!-- please see git commit -m "Passed through linter and made some fixes (i)" -->
+
+
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:23:0: C0301: Line too long (122/100) (line-too-long)
+pickling_code_copy.py:93:0: C0301: Line too long (106/100) (line-too-long)
+pickling_code_copy.py:39:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+pickling_code_copy.py:58:8: W0612: Unused variable 'location' (unused-variable)
+pickling_code_copy.py:92:8: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:143:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:179:11: W0705: Catching previously caught exception type ValueError (duplicate-except)
+pickling_code_copy.py:161:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+pickling_code_copy.py:172:11: C0121: Comparison 'choiceisoption == False' should be 'choiceisoption is False' if checking for the singleton value False, or 'not choiceisoption' if testing for falsiness (singleton-comparison)
+pickling_code_copy.py:176:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:179:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:186:9: W0622: Redefining built-in 'input' (redefined-builtin)
+pickling_code_copy.py:203:0: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:208:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:213:4: W0612: Unused variable 'fridge' (unused-variable)
+pickling_code_copy.py:214:4: W0612: Unused variable 'pickling_table' (unused-variable)
+pickling_code_copy.py:217:4: W0612: Unused variable 'spices' (unused-variable)
+pickling_code_copy.py:218:4: W0612: Unused variable 'garlic' (unused-variable)
+pickling_code_copy.py:219:4: W0612: Unused variable 'dill' (unused-variable)
+pickling_code_copy.py:220:4: W0612: Unused variable 'mustard_seeds' (unused-variable)
+pickling_code_copy.py:222:4: W0612: Unused variable 'pickling_brine' (unused-variable)
+pickling_code_copy.py:223:4: W0612: Unused variable 'salt' (unused-variable)
+pickling_code_copy.py:224:4: W0612: Unused variable 'sugar' (unused-variable)
+pickling_code_copy.py:225:4: W0612: Unused variable 'water' (unused-variable)
+pickling_code_copy.py:226:4: W0612: Unused variable 'vinegar' (unused-variable)
+pickling_code_copy.py:4:0: W0611: Unused import time (unused-import)
+pickling_code_copy.py:5:0: W0611: Unused subprocess imported as sp (unused-import)
+
+------------------------------------------------------------------
+Your code has been rated at 7.79/10 (previous run: 7.70/10, +0.08)
+
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:23:0: C0301: Line too long (122/100) (line-too-long)
+pickling_code_copy.py:92:0: C0301: Line too long (106/100) (line-too-long)
+pickling_code_copy.py:39:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+pickling_code_copy.py:58:8: W0612: Unused variable 'location' (unused-variable)
+pickling_code_copy.py:91:8: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:142:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:178:11: W0705: Catching previously caught exception type ValueError (duplicate-except)
+pickling_code_copy.py:175:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:178:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:201:0: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:214:4: W0612: Unused variable 'fridge' (unused-variable)
+pickling_code_copy.py:215:4: W0612: Unused variable 'pickling_table' (unused-variable)
+pickling_code_copy.py:218:4: W0612: Unused variable 'spices' (unused-variable)
+pickling_code_copy.py:219:4: W0612: Unused variable 'garlic' (unused-variable)
+pickling_code_copy.py:220:4: W0612: Unused variable 'dill' (unused-variable)
+pickling_code_copy.py:221:4: W0612: Unused variable 'mustard_seeds' (unused-variable)
+pickling_code_copy.py:223:4: W0612: Unused variable 'pickling_brine' (unused-variable)
+pickling_code_copy.py:224:4: W0612: Unused variable 'salt' (unused-variable)
+pickling_code_copy.py:225:4: W0612: Unused variable 'sugar' (unused-variable)
+pickling_code_copy.py:226:4: W0612: Unused variable 'water' (unused-variable)
+pickling_code_copy.py:227:4: W0612: Unused variable 'vinegar' (unused-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 8.24/10 (previous run: 7.79/10, +0.45)
+
+*************
+
+<pre><font color="#8AE234"><b>mojojojo@joanownsthis</b></font>:<font color="#729FCF"><b>~/Documents/WebDevStuff/PP3</b></font>$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:23:0: C0301: Line too long (122/100) (line-too-long)
+pickling_code_copy.py:92:0: C0301: Line too long (106/100) (line-too-long)
+pickling_code_copy.py:39:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+pickling_code_copy.py:58:8: W0612: Unused variable &apos;location&apos; (unused-variable)
+pickling_code_copy.py:91:8: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:142:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:178:11: W0705: Catching previously caught exception type ValueError (duplicate-except)
+pickling_code_copy.py:175:4: C0103: Variable name &quot;e&quot; doesn&apos;t conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:178:4: C0103: Variable name &quot;e&quot; doesn&apos;t conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:201:0: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:214:4: W0612: Unused variable &apos;fridge&apos; (unused-variable)
+pickling_code_copy.py:215:4: W0612: Unused variable &apos;pickling_table&apos; (unused-variable)
+pickling_code_copy.py:218:4: W0612: Unused variable &apos;spices&apos; (unused-variable)
+pickling_code_copy.py:219:4: W0612: Unused variable &apos;garlic&apos; (unused-variable)
+pickling_code_copy.py:220:4: W0612: Unused variable &apos;dill&apos; (unused-variable)
+pickling_code_copy.py:221:4: W0612: Unused variable &apos;mustard_seeds&apos; (unused-variable)
+pickling_code_copy.py:223:4: W0612: Unused variable &apos;pickling_brine&apos; (unused-variable)
+pickling_code_copy.py:224:4: W0612: Unused variable &apos;salt&apos; (unused-variable)
+pickling_code_copy.py:225:4: W0612: Unused variable &apos;sugar&apos; (unused-variable)
+pickling_code_copy.py:226:4: W0612: Unused variable &apos;water&apos; (unused-variable)
+pickling_code_copy.py:227:4: W0612: Unused variable &apos;vinegar&apos; (unused-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 8.24/10 (previous run: 7.79/10, +0.45)
+</pre>
+
+
+<!--git commit -m "Passed through linter again and made some more fixes"-->
+
+
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:33:0: C0301: Line too long (124/100) (line-too-long)
+pickling_code_copy.py:102:0: C0301: Line too long (106/100) (line-too-long)
+pickling_code_copy.py:247:0: C0303: Trailing whitespace (trailing-whitespace)
+pickling_code_copy.py:253:0: C0303: Trailing whitespace (trailing-whitespace)
+pickling_code_copy.py:304:0: C0303: Trailing whitespace (trailing-whitespace)
+pickling_code_copy.py:49:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+pickling_code_copy.py:68:8: W0612: Unused variable 'location' (unused-variable)
+pickling_code_copy.py:101:8: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:152:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:188:11: W0705: Catching previously caught exception type ValueError (duplicate-except)
+pickling_code_copy.py:185:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:188:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:194:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:221:4: C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+pickling_code_copy.py:227:0: C0116: Missing function or method docstring (missing-function-docstring)
+pickling_code_copy.py:229:4: C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+pickling_code_copy.py:240:4: C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+pickling_code_copy.py:249:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+pickling_code_copy.py:235:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+pickling_code_copy.py:283:4: W0612: Unused variable 'location' (unused-variable)
+pickling_code_copy.py:287:4: W0612: Unused variable 'fridge' (unused-variable)
+pickling_code_copy.py:291:4: W0612: Unused variable 'spices' (unused-variable)
+pickling_code_copy.py:292:4: W0612: Unused variable 'garlic' (unused-variable)
+pickling_code_copy.py:293:4: W0612: Unused variable 'dill' (unused-variable)
+pickling_code_copy.py:294:4: W0612: Unused variable 'mustard_seeds' (unused-variable)
+pickling_code_copy.py:296:4: W0612: Unused variable 'pickling_brine' (unused-variable)
+pickling_code_copy.py:297:4: W0612: Unused variable 'salt' (unused-variable)
+pickling_code_copy.py:298:4: W0612: Unused variable 'sugar' (unused-variable)
+pickling_code_copy.py:299:4: W0612: Unused variable 'water' (unused-variable)
+pickling_code_copy.py:300:4: W0612: Unused variable 'vinegar' (unused-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 8.31/10 (previous run: 8.24/10, +0.07)
+
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ ^C
+mojojojo@joanownsthis:~/Documents/WebDevStuff/PP3$ pylint pickling_code_copy.py 
+************* Module pickling_code_copy
+pickling_code_copy.py:33:0: C0301: Line too long (124/100) (line-too-long)
+pickling_code_copy.py:102:0: C0301: Line too long (106/100) (line-too-long)
+pickling_code_copy.py:266:0: C0325: Unnecessary parens after 'return' keyword (superfluous-parens)
+pickling_code_copy.py:49:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+pickling_code_copy.py:68:8: W0612: Unused variable 'location' (unused-variable)
+pickling_code_copy.py:101:8: W0105: String statement has no effect (pointless-string-statement)
+pickling_code_copy.py:191:11: W0705: Catching previously caught exception type ValueError (duplicate-except)
+pickling_code_copy.py:188:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:191:4: C0103: Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+pickling_code_copy.py:227:4: C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+pickling_code_copy.py:238:4: C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+pickling_code_copy.py:249:4: C0200: Consider using enumerate instead of iterating with range and len (consider-using-enumerate)
+pickling_code_copy.py:257:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+pickling_code_copy.py:291:4: W0612: Unused variable 'location' (unused-variable)
+pickling_code_copy.py:295:4: W0612: Unused variable 'fridge' (unused-variable)
+pickling_code_copy.py:299:4: W0612: Unused variable 'spices' (unused-variable)
+pickling_code_copy.py:300:4: W0612: Unused variable 'garlic' (unused-variable)
+pickling_code_copy.py:301:4: W0612: Unused variable 'dill' (unused-variable)
+pickling_code_copy.py:302:4: W0612: Unused variable 'mustard_seeds' (unused-variable)
+pickling_code_copy.py:304:4: W0612: Unused variable 'pickling_brine' (unused-variable)
+pickling_code_copy.py:305:4: W0612: Unused variable 'salt' (unused-variable)
+pickling_code_copy.py:306:4: W0612: Unused variable 'sugar' (unused-variable)
+pickling_code_copy.py:307:4: W0612: Unused variable 'water' (unused-variable)
+pickling_code_copy.py:308:4: W0612: Unused variable 'vinegar' (unused-variable)
+
+------------------------------------------------------------------
+Your code has been rated at 8.65/10 (previous run: 8.31/10, +0.35)
+
+
